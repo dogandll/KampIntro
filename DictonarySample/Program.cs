@@ -9,7 +9,7 @@ namespace DictonarySample
         {
             MyDictonary<int, string> myDictonary = new MyDictonary<int, string>();
             myDictonary.Add(1, "Doğan");
-            Console.WriteLine(myDictonary.);
+            Console.WriteLine(myDictonary);
         }
     }
 
