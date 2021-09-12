@@ -9,16 +9,23 @@ namespace DictonarySample
         {
             MyDictonary<int, string> myDictonary = new MyDictonary<int, string>();
             myDictonary.Add(1, "Doğan");
-            Console.WriteLine(myDictonary);
+            myDictonary.Add(2, "Uğur");
+            myDictonary.Add(3, "Zehra");
+            myDictonary.Add(4, "Fatma");
+            Console.WriteLine("CountKey :" + myDictonary.CountKey);
+            Console.WriteLine("CountValue :" + myDictonary.CountValue);
+            Console.WriteLine("Count :" + myDictonary.Count);
         }
     }
 
-    public class MyDictonary<Tkey, Tvalue>
+    class MyDictonary<Tkey, Tvalue>
     {
         Tkey[] tkeys;
-        Tkey[] _tempkeys;
         Tvalue[] tvalues;
+
+        Tkey[] _tempkeys;
         Tvalue[] _tempvalues;
+
         public MyDictonary()
         {
             tkeys = new Tkey[0];
@@ -27,20 +34,40 @@ namespace DictonarySample
 
         public void Add(Tkey key, Tvalue value)
         {
-            _tempkeys = tkeys;
-            _tempvalues = tvalues;
             tkeys = new Tkey[tkeys.Length + 1];
             tvalues = new Tvalue[tvalues.Length + 1];
+
+            _tempkeys = tkeys;
+            _tempvalues = tvalues;
+
+
+
             for (int i = 0; i < tkeys.Length; i++)
             {
-                _tempkeys[i] = tkeys[i];
-                _tempvalues[i] = tvalues[i];
+                tvalues[i] = _tempvalues[i];
+                tkeys[i] = _tempkeys[i];
             }
-            tkeys[tkeys.Length - 1] = key;
             tvalues[tvalues.Length - 1] = value;
+            tkeys[tkeys.Length - 1] = key;
+
 
         }
+
+        public int Count
+        {
+            get { return tkeys.Length + tvalues.Length; }
+        }
+        public int CountKey
+        {
+            get { return tkeys.Length; }
+        }
+
+        public int CountValue
+        {
+            get { return tvalues.Length; }
+        }
     }
+
 }
 
 
