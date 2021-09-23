@@ -8,7 +8,7 @@ namespace OOP3
         static void Main(string[] args)
         {
 
-            //interface implement eden sınıfı referans olarak tutabilir.
+            //interface implement eden sınıfı referans olarak tutabilir..
 
             IKrediManager ihtiyacKrediManager = new IhtiyacKrediManager();
             IKrediManager konutKrediManager = new KonutKrediManager();
